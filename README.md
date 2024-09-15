@@ -5,7 +5,7 @@
 [![Changelog](https://img.shields.io/github/v/release/coatless-py-pkg/pybabynames?include_prereleases&label=changelog)](https://github.com/coatless-py-pkg/pybabynames/releases)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/coatless-py-pkg/pybabynames/blob/main/LICENSE)
 
-Python port of the R data package 'babynames'. This package provides US baby names data from the Social Security Administration (SSA). It contains all names used for at least 5 children of either sex in the United States.
+Python port of the R data package 'babynames'. This package provides US baby names data from the Social Security Administration (SSA). It contains all names used for at least 5 children of either sex in the United States. The package features the ability to switch between the data being imported as a Pandas DataFrame or a Polars DataFrame by setting an environment variable.
 
 ## Installation
 
