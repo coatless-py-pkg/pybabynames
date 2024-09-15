@@ -1,0 +1,18 @@
+# Changelog
+
+## [1.0.0] - 2024-09-15
+
+### Features
+
+- Initial release of `pybabynames` package
+    - Four main datasets: `babynames`, `applicants`, `lifetables`, and `births`
+- Dynamic framework importation of data based on `DATAFRAME_FRAMEWORK` environment variable
+
+### Added
+
+- Support for both pandas and polars data frameworks
+    - Warning system for missing dependencies
+    - Graceful fallback if one is not available
+- Detailed docstrings for each dataset providing information on data structure and content
+- Comprehensive pytest suite for package testing
+
