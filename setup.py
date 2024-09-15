@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='babynames',
+    name='pybabynames',
     version='0.1',
     packages=find_packages(),
-    package_data={'babynames': ['data/*.csv.*']},
+    package_data={'pybabynames': ['data/*.csv.*']},
     install_requires=[],  # No hard requirements
     extras_require={
         'pandas': ['pandas'],
