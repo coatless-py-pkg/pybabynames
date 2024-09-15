@@ -31,12 +31,6 @@ load_rda_and_export_csv <- function(x) {
     df_data, file = file.path("data-raw",  "parquet", paste0(data_name, ".parquet"))
   )
   
-  # Copy the parquet file to the data directory
-  file.copy(
-    file.path("data-raw",  "parquet", paste0(data_name, ".parquet")),
-    file.path("data",  paste0(data_name, ".parquet"))
-  )
-  
   TRUE
 }
 
@@ -45,5 +39,11 @@ lapply(rda_files, load_rda_and_export_csv)
 
 # Create a zip file for babynames 55 MB unzipped!!! 
 # ~ 9.6mb zipped
-zip(file.path("data-raw", "csv", "babynames.csv.zip"), files = file.path("data-raw", "csv", "babynames.csv"))
+oldwd <- setwd(file.path("data-raw", "csv"))
+zip("babynames.csv.zip", files = "babynames.csv")
+setwd(oldwd)
 
+file.copy(
+  file.path("data-raw", "csv", "babynames.csv.zip"),
+  file.path("pybabynames", "data", "babynames.csv.zip")
+)
