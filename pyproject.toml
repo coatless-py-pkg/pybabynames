@@ -37,4 +37,4 @@ pandas = ["pandas"]
 packages = ["pybabynames"]
 
 [tool.setuptools.package-data]
-pybabynames = ["data/*.csv", "data/*.csv.zip"]
+pybabynames = ["data/*.parquet"]
