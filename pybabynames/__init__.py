@@ -2,7 +2,7 @@ import os
 import warnings
 from importlib import import_module
 from importlib_resources import files
-from typing import Union
+from typing import Union, Literal
 
 # Define the data directory
 DATA_DIR = os.path.join(files(__package__), 'data')
