@@ -24,14 +24,14 @@ def test_dataframe_columns():
     """Test that dataframes have the expected columns."""
     expected_babynames_columns = ['year', 'sex', 'name', 'n', 'prop']
     expected_applicants_columns = ['year', 'sex', 'n_all']
-    assert list(bn.babynames.columns) == expected_bn_columns
+    assert list(bn.babynames.columns) == expected_babynames_columns
     assert list(bn.applicants.columns) == expected_applicants_columns
 
 def test_documentation():
     """Test that documentation is accessible."""
     assert bn.babynames.__doc__ is not None
     assert bn.applicants.__doc__ is not None
-    assert "bn Dataset" in bn.babynames.__doc__
+    assert "Babynames Dataset" in bn.babynames.__doc__
     assert "Applicants Dataset" in bn.applicants.__doc__
 
 @pytest.mark.parametrize("framework", ['pandas', 'polars'])
@@ -40,5 +40,5 @@ def test_different_frameworks(framework):
     os.environ['DATAFRAME_FRAMEWORK'] = framework
     import importlib
     importlib.reload(bn)
-    assert hasattr(bn, 'bn')
+    assert hasattr(bn, 'babynames')
     assert hasattr(bn, 'applicants')
