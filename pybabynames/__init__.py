@@ -27,7 +27,7 @@ def _dataframe_framework() -> FrameworkType:
         return DEFAULT_FRAMEWORK
     return framework
 
-CURRENT_FRAMEWORK = get_dataframe_framework()
+CURRENT_FRAMEWORK = _dataframe_framework()
 
 def _dataframe_module():
     """
