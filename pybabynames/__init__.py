@@ -1,4 +1,5 @@
 import os
+import warnings
 from importlib import import_module
 from importlib_resources import files
 from typing import Union
@@ -30,11 +31,15 @@ def _load_dataframe(file_path: str) -> Union['pandas.DataFrame', 'polars.DataFra
     df_module = _dataframe_module()
     return df_module.read_parquet(file_path)
 
-# Load dataframes on import
-babynames = _load_dataframe(os.path.join(DATA_DIR, 'babynames.parquet'))
-applicants = _load_dataframe(os.path.join(DATA_DIR, 'applicants.parquet'))
-births = _load_dataframe(os.path.join(DATA_DIR, 'births.parquet'))
-lifetables = _load_dataframe(os.path.join(DATA_DIR, 'lifetables.parquet'))
+# Attempt to load dataframes on import
+try:
+    babynames = _load_dataframe(os.path.join(DATA_DIR, 'babynames.parquet'))
+    applicants = _load_dataframe(os.path.join(DATA_DIR, 'applicants.parquet'))
+    births = _load_dataframe(os.path.join(DATA_DIR, 'births.parquet'))
+    lifetables = _load_dataframe(os.path.join(DATA_DIR, 'lifetables.parquet'))
+except:
+    warnings.warn(f"Failed to load dataframes!", RuntimeWarning)
+    babynames = applicants = lifetables = births = None
 
 # Attach help documentation to the object
 babynames.__doc__ = """
