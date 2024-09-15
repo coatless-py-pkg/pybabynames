@@ -1,10 +1,10 @@
 import os
 import warnings
-from importlib import import_module, files
+from importlib import import_module, resources.files
 from typing import Union, Literal
 
 # Define the data directory
-DATA_DIR = os.path.join(files(__package__), 'data')
+DATA_DIR = os.path.join(resources.files(__package__), 'data')
 
 # Define valid framework options
 FrameworkType = Literal['pandas', 'polars']
