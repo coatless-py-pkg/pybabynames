@@ -1,7 +1,7 @@
 # Convert all .rda files in the data-raw directory to .csv files
 
 # Obtain a list of all .rda files in the data-raw directory
-rda_files <- list.files(path = "data-raw", pattern = ".rda", full.names = TRUE)
+rda_files <- list.files(path = "data-raw/rda", pattern = ".rda", full.names = TRUE)
 
 dir.create(file.path("data-raw", "csv"), showWarnings = FALSE, recursive = TRUE)
 dir.create(file.path("data-raw", "parquet"), showWarnings = FALSE, recursive = TRUE)
@@ -23,12 +23,18 @@ load_rda_and_export_csv <- function(x) {
   # Save the data as a .csv file
   write.csv(
     df_data, file = file.path("data-raw", "csv", paste0(data_name, ".csv")), 
-    row.names = FALSE
+    row.names = FALSE, fileEncoding = "UTF-8"
   )
   
   # Save the data as a parquet file
   nanoparquet::write_parquet(
     df_data, file = file.path("data-raw",  "parquet", paste0(data_name, ".parquet"))
+  )
+  
+  file.copy(
+    file.path("data-raw", "parquet", paste0(data_name, ".parquet")),
+    file.path("pybabynames", "data", paste0(data_name, ".parquet")),
+    overwrite = TRUE
   )
   
   TRUE
@@ -43,7 +49,3 @@ oldwd <- setwd(file.path("data-raw", "csv"))
 zip("babynames.csv.zip", files = "babynames.csv")
 setwd(oldwd)
 
-file.copy(
-  file.path("data-raw", "csv", "babynames.csv.zip"),
-  file.path("pybabynames", "data", "babynames.csv.zip")
-)
