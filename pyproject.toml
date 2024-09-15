@@ -1,0 +1,32 @@
+[project]
+name = "pybabynames"
+version = "0.1"
+description = "Python port of the R data package 'babynames' by Hadley Wickham. This package provides US baby names data from the Social Security Administration (SSA). It contains all names used for at least 5 children of either sex in the United States."
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{name = "James Joseph Balamuta"}]
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3"
+]
+dependencies = [
+
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/coatless-py-pkg/pybabynames"
+Changelog = "https://github.com/coatless-py-pkg/pybabynames/releases"
+Issues = "https://github.com/coatless-py-pkg/pybabynames/issues"
+CI = "https://github.com/coatless-py-pkg/pybabynames/actions"
+
+
+[project.optional-dependencies]
+test = ["pytest"]
+pandas = ["pandas"]
+polars = ["polars"]
