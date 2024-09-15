@@ -13,7 +13,7 @@ classifiers = [
     "Programming Language :: Python :: 3"
 ]
 dependencies = [
-    "pyarrow", "importlib-resources",
+    "pyarrow"
 ]
 
 [build-system]
@@ -30,6 +30,8 @@ CI = "https://github.com/coatless-py-pkg/pybabynames/actions"
 [project.optional-dependencies]
 test = ["pytest", "pandas", "polars"]
 docs = ["quartodoc", "pandas", "polars"]
+polars = ["polars"]
+pandas = ["pandas"]
 
 [tool.setuptools]
 packages = ["pybabynames"]
