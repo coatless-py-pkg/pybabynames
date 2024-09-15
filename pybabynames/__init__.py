@@ -3,20 +3,30 @@ from importlib import import_module
 from importlib_resources import files
 from typing import Union
 
+# Define the data directory
 DATA_DIR = os.path.join(files(__package__), 'data')
-DEFAULT_FRAMEWORK = os.environ.get('DATAFRAME_FRAMEWORK', 'polars').lower()
+# Set the default dataframe framework
+DEFAULT_FRAMEWORK: FrameworkType = 'polars'
 
 def _dataframe_module():
-    """Dynamically import and return the appropriate dataframe module."""
-    if DEFAULT_FRAMEWORK == 'pandas':
-        return import_module('pandas')
-    elif DEFAULT_FRAMEWORK == 'polars':
-        return import_module('polars')
-    else:
+    """
+    Dynamically import and return the appropriate dataframe module.
+
+    Returns:
+        module: The imported dataframe module (either pandas or polars).
+    """
         raise ValueError("BABYNAMES_FRAMEWORK must be either 'pandas' or 'polars'")
 
 def _load_dataframe(file_path: str) -> Union['pandas.DataFrame', 'polars.DataFrame']:
-    """Load a dataframe using the specified dataframe framework."""
+    """
+    Load a dataframe using the specified dataframe framework.
+
+    Args:
+        file_path (str): The path to the Parquet file to be loaded.
+
+    Returns:
+        Union['pandas.DataFrame', 'polars.DataFrame']: The loaded dataframe.
+    """
     df_module = _dataframe_module()
     return df_module.read_parquet(file_path)
 
