@@ -8,11 +8,12 @@ authors = [{name = "James Joseph Balamuta"}]
 license = {text = "MIT"}
 classifiers = [
     "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3"
 ]
 dependencies = [
-
+    "importlib-resources",
 ]
 
 [build-system]
@@ -30,3 +31,9 @@ CI = "https://github.com/coatless-py-pkg/pybabynames/actions"
 test = ["pytest"]
 pandas = ["pandas"]
 polars = ["polars"]
+
+[tool.setuptools]
+packages = ["pybabynames"]
+
+[tool.setuptools.package-data]
+pybabynames = ["data/*.csv", "data/*.csv.zip"]
