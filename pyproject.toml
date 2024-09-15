@@ -1,6 +1,6 @@
 [project]
 name = "pybabynames"
-version = "0.1"
+version = "1.0.0"
 description = "Python port of the R data package 'babynames'. This package provides US baby names data from the Social Security Administration (SSA). It contains all names used for at least 5 children of either sex in the United States. The package features the ability to switch between the data being imported as a Pandas DataFrame or a Polars DataFrame by setting an environment variable."
 readme = "README.md"
 requires-python = ">=3.9"
