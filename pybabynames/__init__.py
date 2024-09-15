@@ -1,8 +1,9 @@
 import os
-from importlib import import_module, resources
+from importlib import import_module
+from importlib_resources import files
 from typing import Union
 
-DATA_DIR = os.path.join(resources.files(__package__), 'data')
+DATA_DIR = os.path.join(files(__package__), 'data')
 DEFAULT_FRAMEWORK = os.environ.get('DATAFRAME_FRAMEWORK', 'polars').lower()
 
 def _dataframe_module():
