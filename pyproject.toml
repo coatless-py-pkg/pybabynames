@@ -13,7 +13,7 @@ classifiers = [
     "Programming Language :: Python :: 3"
 ]
 dependencies = [
-    "importlib-resources",
+    "pyarrow", "importlib-resources",
 ]
 
 [build-system]
