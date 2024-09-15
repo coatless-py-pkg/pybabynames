@@ -1,0 +1,16 @@
+.venv
+__pycache__/
+*.py[cod]
+*$py.class
+venv
+.eggs
+.pytest_cache
+*.egg-info
+.DS_Store
+dist
+build
+.Rproj.user
+*.Rproj
+
+data-raw/csv/*
+data-raw/parquet/*
