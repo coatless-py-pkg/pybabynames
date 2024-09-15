@@ -2,8 +2,8 @@ import os
 from importlib import import_module, resources
 from typing import Union
 
-DATA_DIR = os.path.join(resources.files(__package__), "data")
-DEFAULT_FRAMEWORK = os.environ.get('DATAFRAME_FRAMEWORK', 'pandas').lower()
+DATA_DIR = os.path.join(resources.files(__package__), 'data')
+DEFAULT_FRAMEWORK = os.environ.get('DATAFRAME_FRAMEWORK', 'polars').lower()
 
 def _dataframe_module():
     """Dynamically import and return the appropriate dataframe module."""
