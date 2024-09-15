@@ -28,25 +28,60 @@ lifetables = _load_dataframe(os.path.join(DATA_DIR, 'lifetables.parquet'))
 
 # Attach help documentation to the object
 babynames.__doc__ = """
-Babynames Dataset
+Baby names.
 
-This dataset contains information about baby names in the United States.
+Full baby name data provided by the SSA. This includes all names with at least 5 uses.
 
 Columns:
-- year: The year of the record (integer)
-- sex: The sex associated with the name (string, 'F' for female or 'M' for male)
-- name: The given name (string)
-- n: The number of babies given this name in this year (integer)
-- prop: The proportion of babies given this name in this year (float)
+    year (int): The year of the record.
+    sex (str): The sex associated with the name ('F' for female or 'M' for male).
+    name (str): The given name.
+    n (int): The number of applicants with this name.
+    prop (float): The proportion of applicants with this name (n divided by total number
+        of applicants in that year, which means proportions are of people of
+        that sex with that name born in that year).
 """
 
 applicants.__doc__ = """
-Applicants Dataset
+Applicants.
 
-This dataset contains information about Social Security Number applicants.
+The SSA baby names data comes from social security number (SSN) applications.
+SSA cards were first issued in 1936, but were only needed for people with
+an income. In 1986, the law changed effectively requiring all children to
+get an SSN at birth.
 
 Columns:
-- year: The year of the record (integer)
-- sex: The sex of the applicants (string, 'F' for female or 'M' for male)
-- n_all: The number of applicants in this year and sex category (integer)
+    year (int): The year of the record.
+    sex (str): The sex of the applicants.
+    applicants (int): The number of applicants.
+"""
+
+
+births.__doc__ = """
+Births
+
+Live births data from census.gov.
+
+Columns:
+    year (int): Year.
+    births (int): Number of live births, rounded to nearest 1000.
+"""
+
+lifetables.__doc__ = """
+Lifetables
+
+Cohort life tables data as provided by SSA.
+
+Columns:
+    x (int): Age in years.
+    qx (float): Probability of death at age x.
+    lx (int): Number of survivors, of birth cohort of 100,000, at next integral age.
+    dx (int): Number of deaths that would occur between integral ages.
+    Lx (float): Number of person-years lived between x and x+1.
+    Tx (float): Total number of person-years lived beyond age x.
+    ex (float): Average number of years of life remaining for members of cohort alive at age x.
+    sex (str): Sex.
+    year (int): Year.
+
+For further details, see http://www.ssa.gov/oact/NOTES/as120/LifeTables_Body.html#wp1168594
 """
