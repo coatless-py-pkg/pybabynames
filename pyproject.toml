@@ -28,7 +28,7 @@ CI = "https://github.com/coatless-py-pkg/pybabynames/actions"
 
 
 [project.optional-dependencies]
-test = ["pytest"]
+test = ["pytest", "pandas", "polars"]
 pandas = ["pandas"]
 polars = ["polars"]
 
