@@ -18,13 +18,13 @@ def _dataframe_module():
 def _load_dataframe(file_path: str) -> Union['pandas.DataFrame', 'polars.DataFrame']:
     """Load a dataframe using the specified dataframe framework."""
     df_module = _dataframe_module()
-    return df_module.read_csv(file_path)
+    return df_module.read_parquet(file_path)
 
 # Load dataframes on import
-babynames = _load_dataframe(os.path.join(DATA_DIR, 'babynames.csv.zip'))
-applicants = _load_dataframe(os.path.join(DATA_DIR, 'applicants.csv'))
-births = _load_dataframe(os.path.join(DATA_DIR, 'births.csv'))
-lifetables = _load_dataframe(os.path.join(DATA_DIR, 'lifetables.csv'))
+babynames = _load_dataframe(os.path.join(DATA_DIR, 'babynames.parquet'))
+applicants = _load_dataframe(os.path.join(DATA_DIR, 'applicants.parquet'))
+births = _load_dataframe(os.path.join(DATA_DIR, 'births.parquet'))
+lifetables = _load_dataframe(os.path.join(DATA_DIR, 'lifetables.parquet'))
 
 # Attach help documentation to the object
 babynames.__doc__ = """
