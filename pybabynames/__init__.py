@@ -1,6 +1,6 @@
 import os
 import warnings
-from importlib import import_module, resources.files
+from importlib import import_module, resources
 from typing import Union, Literal
 
 # Define the data directory
