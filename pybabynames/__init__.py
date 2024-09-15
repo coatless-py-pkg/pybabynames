@@ -6,8 +6,28 @@ from typing import Union
 
 # Define the data directory
 DATA_DIR = os.path.join(files(__package__), 'data')
+
+# Define valid framework options
+FrameworkType = Literal['pandas', 'polars']
+VALID_FRAMEWORKS: list[FrameworkType] = ['pandas', 'polars']
+
 # Set the default dataframe framework
 DEFAULT_FRAMEWORK: FrameworkType = 'polars'
+
+def _dataframe_framework() -> FrameworkType:
+    """
+    Get the dataframe framework from the environment variable or use the default.
+
+    Returns:
+        FrameworkType: The selected dataframe framework.
+    """
+    framework = os.environ.get('DATAFRAME_FRAMEWORK', DEFAULT_FRAMEWORK).lower()
+    if framework not in VALID_FRAMEWORKS:
+        warnings.warn(f"Invalid DATAFRAME_FRAMEWORK '{framework}'. Using default: {DEFAULT_FRAMEWORK}", RuntimeWarning)
+        return DEFAULT_FRAMEWORK
+    return framework
+
+CURRENT_FRAMEWORK = get_dataframe_framework()
 
 def _dataframe_module():
     """
@@ -16,7 +36,7 @@ def _dataframe_module():
     Returns:
         module: The imported dataframe module (either pandas or polars).
     """
-        raise ValueError("BABYNAMES_FRAMEWORK must be either 'pandas' or 'polars'")
+    return import_module(CURRENT_FRAMEWORK)
 
 def _load_dataframe(file_path: str) -> Union['pandas.DataFrame', 'polars.DataFrame']:
     """
