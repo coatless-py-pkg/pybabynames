@@ -33,9 +33,10 @@ This dataset contains information about baby names in the United States.
 
 Columns:
 - year: The year of the record (integer)
-- name: The given name (string)
 - sex: The sex associated with the name (string, 'F' for female or 'M' for male)
-- number: The number of babies given this name in this year (integer)
+- name: The given name (string)
+- n: The number of babies given this name in this year (integer)
+- prop: The proportion of babies given this name in this year (float)
 """
 
 applicants.__doc__ = """
